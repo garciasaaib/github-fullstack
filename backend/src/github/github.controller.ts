@@ -5,11 +5,6 @@ import { GithubService } from './github.service';
 export class GithubController {
   constructor(private readonly githubService: GithubService) {}
 
-  @Get('')
-  getData() {
-    return 'This action returns a github repo';
-  }
-
   @Get(':user/:repo')
   findOne(@Param('user') user: string, @Param('repo') repo: string) {
     return this.githubService.findCommits(user, repo);

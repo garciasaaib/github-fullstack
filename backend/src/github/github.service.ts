@@ -1,5 +1,6 @@
 import { HttpService } from '@nestjs/axios';
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
+import { catchError, firstValueFrom } from 'rxjs';
 
 @Injectable()
 export class GithubService {
@@ -8,13 +9,16 @@ export class GithubService {
     @Inject('GITHUB_API_URL') private githubApiUrl: string,
   ) {}
 
-  async findCommits(user: string, repo: string) {
-    return `${this.githubApiUrl}repos/${user}/${repo}/commits`;
-    // const data = await this.httpService.get(
-    //   `https://api.github.com/repos/${user}/${repo}/commits`,
-    //   );
+  public async findCommits(user: string, repo: string) {
+    const endpoint = `${this.githubApiUrl}repos/${user}/${repo}/commits`;
 
-    // return data
-    // return 'hello'
+    const response = await firstValueFrom(
+      this.httpService.get(endpoint).pipe(
+        catchError(() => {
+          throw new NotFoundException('Repo not Found');
+        }),
+      ),
+    );
+    return response.data;
   }
 }
