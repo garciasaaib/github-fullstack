@@ -1,10 +1,21 @@
 GET http://localhost:3000 HTTP/1.1
 
-###
-GET http://localhost:3000/github/user HTTP/1.1
+
+
+### repo commits
+GET https://api.github.com/repos/garciasaaib/github-fullstack/commits HTTP/1.1
+
+### repo general
+GET https://api.github.com/repos/garciasaaib/github-fullstack HTTP/1.1
+
+### user
+GET https://api.github.com/users/garciasaaib HTTP/1.1
+
+
 
 ###
-GET https://api.github.com/repos/OWNER/REPO/commitst HTTP/1.1
-Accept: application/vnd.github+json
-Authorization: Bearer <YOUR-TOKEN>
-X-GitHub-Api-Version: 2022-11-28
+GET http://localhost:5000/github HTTP/1.1
+###
+GET http://localhost:5000/github/garciasaaib HTTP/1.1
+###
+GET http://localhost:5000/github/garciasaaib/github-fullstack HTTP/1.1

@@ -1,26 +1,20 @@
-import { Injectable } from '@nestjs/common';
-import { CreateGithubDto } from './dto/create-github.dto';
-import { UpdateGithubDto } from './dto/update-github.dto';
+import { HttpService } from '@nestjs/axios';
+import { Inject, Injectable } from '@nestjs/common';
 
 @Injectable()
 export class GithubService {
-  create(createGithubDto: CreateGithubDto) {
-    return 'This action adds a new github';
-  }
+  constructor(
+    private readonly httpService: HttpService,
+    @Inject('GITHUB_API_URL') private githubApiUrl: string,
+  ) {}
 
-  findAll() {
-    return `This action returns all github`;
-  }
+  async findCommits(user: string, repo: string) {
+    return `${this.githubApiUrl}repos/${user}/${repo}/commits`;
+    // const data = await this.httpService.get(
+    //   `https://api.github.com/repos/${user}/${repo}/commits`,
+    //   );
 
-  findOne(id: number) {
-    return `This action returns a #${id} github`;
-  }
-
-  update(id: number, updateGithubDto: UpdateGithubDto) {
-    return `This action updates a #${id} github`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} github`;
+    // return data
+    // return 'hello'
   }
 }
