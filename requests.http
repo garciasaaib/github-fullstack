@@ -13,9 +13,6 @@ GET https://api.github.com/users/garciasaaib HTTP/1.1
 
 
 
+
 ###
-GET http://localhost:5000/github HTTP/1.1
-###
-GET http://localhost:5000/github/garciasaaib HTTP/1.1
-###
-GET http://localhost:5000/github/garciasaaib/github-fullstack HTTP/1.1
+GET http://localhost:5000/api/github/garciasaaib/github-fullstack HTTP/1.1

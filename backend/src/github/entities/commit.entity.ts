@@ -67,6 +67,7 @@ export interface Parent {
 
 // managed data from api, taking only the necessary fields for make the frontend work
 export interface GithubCommitsData {
+  sha: string;
   commit: Pick<Commit, 'message' | 'url' | 'comment_count' | 'verification'>;
   comments_url: string;
   html_url: string;

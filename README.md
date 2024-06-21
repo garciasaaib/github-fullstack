@@ -32,8 +32,8 @@ The frontend will be managed with Nextjs, using tailwind and Shad/cn as UI libra
   ```bash
   npm run start:dev
   ```
-4. The backend will be running in the port 5000 by default, try to enter in your browser to [http://localhost:5000](http://localhost:5000/api/), and try the endpoints in the swagger documentation with default values.
-5. **Optional** If you want to run it in postman, your endpoint will be http://localhost:5000/github/garciasaaib/github-fullstack
+4. The backend will be running in the port 5000 by default, try to enter in your browser to [http://localhost:5000/doc](http://localhost:5000/doc), and try the endpoints in the swagger documentation with default values.
+5. **Optional** If you want to run it in postman, your endpoint will be http://localhost:5000/api/github/garciasaaib/github-fullstack
 
 
 

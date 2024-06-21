@@ -14,10 +14,10 @@ export class GithubService {
   ) {}
 
   public async findCommits(user: string, repo: string) {
-    const endpoint = `${this.githubApiUrl}repos/${user}/${repo}/commits`;
+    const endpointCommits = `${this.githubApiUrl}repos/${user}/${repo}/commits`;
 
     const response = await firstValueFrom(
-      this.httpService.get<GithubCommitsDataResponse[]>(endpoint).pipe(
+      this.httpService.get<GithubCommitsDataResponse[]>(endpointCommits).pipe(
         catchError(() => {
           throw new NotFoundException('Repo not Found');
         }),
@@ -27,6 +27,7 @@ export class GithubService {
       throw new NotFoundException('Repo not Found');
     }
     const finalData: GithubCommitsData[] = response.data.map((commit) => ({
+      sha: commit.sha,
       commit: {
         message: commit.commit.message,
         url: commit.commit.url,
@@ -47,6 +48,6 @@ export class GithubService {
       },
     }));
 
-    return finalData;
+    return { commits: finalData };
   }
 }
