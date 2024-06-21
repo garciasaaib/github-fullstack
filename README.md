@@ -38,4 +38,25 @@ The frontend will be managed with Nextjs, using tailwind and Shad/cn as UI libra
 
 
 ##### Frontend
+1. Go to the root folder
+  ```bash
+  cd ..
+  ```
+2. Enter to the frontend folder
+  ```bash
+  cd frontend
+  ```
+3. Install dependencies
+  ```bash
+  npm install
+  ```
+4. Run the project
+  ```bash
+  npm run dev
+  ```
+5. The frontend will be running in the port 3000 by default, try to enter in your browser to [http://localhost:3000](http://localhost:3000), and you will see the commits of this repository.
+
+
+
+enjoy it!
 
